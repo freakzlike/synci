@@ -1,0 +1,43 @@
+name: frontend
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - "frontend/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.26.0
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: install
+        run: pnpm install --frozen-lockfile
+        working-directory: frontend
+
+      - name: lint
+        run: pnpm run lint
+        working-directory: frontend
+
+      - name: build
+        run: pnpm run build
+        working-directory: frontend
