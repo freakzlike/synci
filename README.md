@@ -9,7 +9,7 @@ tbd
 
 Feel free to create an issue for bugs, feature requests, suggestions or any idea you have. You can also add a pull request with your implementation.
 
-I would pe pleased to hear from your experience.
+We would be pleased to hear from your experience.
 
 ## License
 
