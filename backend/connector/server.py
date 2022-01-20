@@ -3,11 +3,11 @@ from channels.generic.websocket import WebsocketConsumer
 
 class EchoConsumer(WebsocketConsumer):
     def connect(self):
-        print(f'connected')
+        print('connected')
         self.accept()
 
     def disconnect(self, close_code):
-        print(f'disconnected')
+        print('disconnected')
         pass
 
     def receive(self, text_data):
