@@ -1,19 +1,16 @@
-import json
-
 from channels.generic.websocket import WebsocketConsumer
 
 
 class EchoConsumer(WebsocketConsumer):
     def connect(self):
+        print(f'connected')
         self.accept()
 
     def disconnect(self, close_code):
+        print(f'disconnected')
         pass
 
     def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
+        print(f'received: {text_data}')
 
-        self.send(text_data=json.dumps({
-            'message': message
-        }))
+        self.send(text_data=text_data)
