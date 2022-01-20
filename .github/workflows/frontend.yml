@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - '**'
-#    paths:
-#      - "frontend/**"
-#  pull_request:
-#    paths:
-#      - "frontend/**"
+    paths:
+      - "frontend/**"
+  pull_request:
+    paths:
+      - "frontend/**"
 
 jobs:
   test:
@@ -33,11 +33,7 @@ jobs:
           version: latest
           run_install: |
             - cwd: frontend
-            - args: [---frozen-lockfile]
-
-      - name: install
-        run: pnpm install --frozen-lockfile
-        working-directory: frontend
+            - args: [--frozen-lockfile]
 
       - name: lint
         run: pnpm run lint
